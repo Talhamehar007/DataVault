@@ -1,0 +1,89 @@
+{
+  "name": "data-vault",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/data-vault/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/data-vault",
+        "index": "apps/data-vault/src/index.html",
+        "baseHref": "/",
+        "main": "apps/data-vault/src/main.tsx",
+        "tsConfig": "apps/data-vault/tsconfig.app.json",
+        "assets": [
+          "apps/data-vault/src/favicon.ico",
+          "apps/data-vault/src/assets"
+        ],
+        "styles": ["apps/data-vault/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "apps/data-vault/webpack.config.js"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/data-vault/src/environments/environment.ts",
+              "with": "apps/data-vault/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "data-vault:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "data-vault:build:development"
+        },
+        "production": {
+          "buildTarget": "data-vault:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/data-vault/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/data-vault/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
