@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve data-vault"
+    "start": "npx nx serve data-vault"
   },
   "private": true,
   "devDependencies": {
