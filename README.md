@@ -1,5 +1,5 @@
 # Data Vault
-A simple and user-friendly data storage application that allows users to securely store and manage their important data.
+A secure and user-friendly app to manage and organize your sensitive data. DataVault allows you to store, categorize and access your confidential information efficiently and safely. With features such as password protection, folder organization, and data search, DataVault makes it easy to keep track of your important data.
 ## Features
 - Search bar to quickly find the data you need
 - User-friendly interface to easily manage stored data
